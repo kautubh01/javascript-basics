@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Namespace in JS</title>
-  </head>
+<head>
+  <title>Namespace in JS</title>
+</head>
+<body>
   <script>
-    var MYNAMESPACE = MYNAMESPACE || {};
-
-    MYNAMESPACE.MessageClass = function(msg) {
-      this.value = msg;
-      this.getMessage = function() {
+    // Define namespace and class in a concise manner
+    const MYNAMESPACE = {
+      MessageClass(msg) {
+        this.value = msg;
+      },
+      getMessage() {
         return this.value;
-      };
+      }
     };
 
-    var obj = new MYNAMESPACE.MessageClass('Pradeep');
-    console.log("Hello "+obj.getMessage());
+    // Create an instance and use it
+    const obj = Object.create(MYNAMESPACE);
+    obj.MessageClass('Pradeep');
+    console.log("Hello " + obj.getMessage());
   </script>
-  <body>
-    Namespace in JavaScript
-  </body>
+</body>
 </html>
+
